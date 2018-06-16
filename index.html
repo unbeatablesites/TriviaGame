@@ -78,7 +78,8 @@
 			function countdown() {
 			    if (timeLeft == -1) {
 			        clearTimeout(timerId);
-			        doSomething();
+			        stop();
+              alert("Time up");
 			    } else {
 			        $("h2").html("Time Remaining " + timeLeft + " Seconds");
 			        timeLeft--;
@@ -86,7 +87,7 @@
 				};
 			});
       
-	
+            
 
 
 </script>

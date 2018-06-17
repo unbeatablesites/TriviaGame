@@ -15,9 +15,10 @@
   	.backGround{
   		background: yellow;
   		width: 800px;
-  		height: 500px;
+  		height:  auto;
   		margin: 0 auto; 
   		margin-top: 100px;
+      padding-bottom: 100px;
   	}
 
   	.button{
@@ -46,8 +47,18 @@
 	  	}
 
 	  h1{
-	  	padding-top: 50px;
+      padding-top: 50px;
+    }
+
+     h3{
+	  	margin: 10px 20px;
+      /*word-wrap: break-word;*/
+      overflow-wrap: break-word;
 	  }
+
+    .hide {
+    display: none;
+}
 
 
   </style>
@@ -61,7 +72,57 @@
 					<h1>Totally Trivial Trivia</h1/>
 					<h2> Click Start To Play </h2>	
 				</div>
+        <div><h3 id="gameOver"></h3></div>
+        
 			<div class="button">Start</div>	
+
+      <div class="hide" id="hide">
+        <div id="question1" class="row">
+            <p class="col-md-12 questionAnswer">Q1: What is my name?</p>
+            <form>
+                <!-- This is how you create radio input. More answers = more input tags -->
+                <input type="radio" name="firstAnswer">Andrew</input>
+                <input type="radio" name="firstAnswer">Kevin</input>
+                <input type="radio" name="firstAnswer">William</input>
+                <input type="radio" name="firstAnswer">Kenny</input>
+                <input type="radio" name="firstAnswer">Frank</input>
+            </form>
+        </div>
+
+        <div id="question2" class="row">
+                <p class="col-md-12 questionAnswer">Q2: What is the capital of Georgia?</p>
+                <form>
+                    <input type="radio" name="firstAnswer">Annapolis</input>
+                    <input type="radio" name="firstAnswer">Chicago</input>
+                    <input type="radio" name="firstAnswer">San Francisco</input>
+                    <input type="radio" name="firstAnswer">Atlanta</input>
+                    <input type="radio" name="firstAnswer">New York City</input>
+                </form>
+        </div>
+
+        <div id="question3" class="row">
+                <p class="col-md-12 questionAnswer">Q2: Which of the following is the highest grossing Disney movie?(As of 6/2018)</p>
+                <form>
+                    <input type="radio" name="firstAnswer">Toy Story 3</input>
+                    <input type="radio" name="firstAnswer">Finding Nemo</input>
+                    <input type="radio" name="firstAnswer">Frozen</input>
+                    <input type="radio" name="firstAnswer">Lion King</input>
+                    <input type="radio" name="firstAnswer">Zootopia</input>
+                </form>
+        </div>
+
+        <div id="question4" class="row">
+                <p class="col-md-12 questionAnswer">Q2: There are one trillion germs that live on each what</p>
+                <form>
+                    <input type="radio" name="firstAnswer">Foot</input>
+                    <input type="radio" name="firstAnswer">Underwear</input>
+                    <input type="radio" name="firstAnswer">Hands</input>
+                    <input type="radio" name="firstAnswer">Garbage Can</input>
+                    <input type="radio" name="firstAnswer">Toilet</input>
+                </form>
+        </div>
+    </div>
+
 
 
 </div>	
@@ -70,7 +131,10 @@
 <script type="text/javascript">
 
 	$(".button").click(function(){
-      		$(".button").fadeOut(2000);
+
+      		$(".button").fadeOut(2000 , function(){
+              $(".hide").removeClass("hide");
+          });
       		var timeLeft = 30;
 			var elem = document.querySelectorAll('h2');
 			var timerId = setInterval(countdown, 1000);
@@ -78,14 +142,23 @@
 			function countdown() {
 			    if (timeLeft == -1) {
 			        clearTimeout(timerId);
+              $("#hide").addClass("hide");
+              $("#gameOver").append("<h3>All Done!</h3>");
+              $("#gameOver").append("<h3>Correct Answers: 0</h3>");
+              $("#gameOver").append("<h3>incorrect Answers: 0</h3>");
+              $("#gameOver").append("<h3>Unanswered: 0 </h3>");
+
 			        stop();
-              alert("Time up");
+              
 			    } else {
 			        $("h2").html("Time Remaining " + timeLeft + " Seconds");
 			        timeLeft--;
 			    	}
 				};
 			});
+
+
+
       
             
 

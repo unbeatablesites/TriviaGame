@@ -72,8 +72,10 @@
 					<h1>Totally Trivial Trivia</h1/>
 					<h2> Click Start To Play </h2>	
 				</div>
-        <div><h3 id="gameOver"></h3></div>
-        
+        <div><h3 id="gameOver"></h3><span id="count" class="hide"></span></div>    
+
+
+
 			<div class="button">Start</div>	
 
       <div class="hide" id="hide">
@@ -81,44 +83,44 @@
             <p class="col-md-12 questionAnswer">Q1: What is my name?</p>
             <form>
                 <!-- This is how you create radio input. More answers = more input tags -->
-                <input value="false" type="radio" name="firstAnswer">Andrew</input>
-                <input value="false" type="radio" name="firstAnswer">Kevin</input>
-                <input value="false" type="radio" name="firstAnswer">William</input>
-                <input value="false" type="radio" name="firstAnswer">Kenny</input>
-                <input value="true" type="radio" name="firstAnswer">Frank</input>
+                <input value="false" type="radio" name="firstAnswer1">Andrew</input>
+                <input value="false" type="radio" name="firstAnswer1">Kevin</input>
+                <input value="false" type="radio" name="firstAnswer1">William</input>
+                <input value="false" type="radio" name="firstAnswer1">Kenny</input>
+                <input value="true" type="radio" name="firstAnswer1">Frank</input>
             </form>
         </div>
 
         <div id="question2" class="row">
                 <p class="col-md-12 questionAnswer">Q2: What is the capital of Georgia?</p>
                 <form>
-                    <input value="false" type="radio" name="firstAnswer">Annapolis</input>
-                    <input value="false" type="radio" name="firstAnswer">Chicago</input>
-                    <input value="false" type="radio" name="firstAnswer">San Francisco</input>
-                    <input value="false" type="radio" name="firstAnswer">Atlanta</input>
-                    <input value="true" type="radio" name="firstAnswer">New York City</input>
+                    <input value="false" type="radio" name="firstAnswer2">Annapolis</input>
+                    <input value="false" type="radio" name="firstAnswer2">Chicago</input>
+                    <input value="false" type="radio" name="firstAnswer2">San Francisco</input>
+                    <input value="true" type="radio" name="firstAnswer2">Atlanta</input>
+                    <input value="false" type="radio" name="firstAnswer2">New York City</input>
                 </form>
         </div>
 
         <div id="question3" class="row">
                 <p class="col-md-12 questionAnswer">Q2: Which of the following is the highest grossing Disney movie?(As of 6/2018)</p>
                 <form>
-                    <input value="false" type="radio" name="firstAnswer">Toy Story 3</input>
-                    <input value="false" type="radio" name="firstAnswer">Finding Nemo</input>
-                    <input value="false" type="radio" name="firstAnswer">Frozen</input>
-                    <input value="false" type="radio" name="firstAnswer">Lion King</input>
-                    <input value="true" type="radio" name="firstAnswer">Zootopia</input>
+                    <input value="false" type="radio" name="firstAnswer3">Toy Story 3</input>
+                    <input value="false" type="radio" name="firstAnswer3">Finding Nemo</input>
+                    <input value="true" type="radio" name="firstAnswer3">Frozen</input>
+                    <input value="false" type="radio" name="firstAnswer3">Lion King</input>
+                    <input value="false" type="radio" name="firstAnswer3">Zootopia</input>
                 </form>
         </div>
 
         <div id="question4" class="row">
                 <p class="col-md-12 questionAnswer">Q2: There are one trillion germs that live on each what</p>
                 <form>
-                    <input value="false" type="radio" name="firstAnswer">Foot</input>
-                    <input value="false" type="radio" name="firstAnswer">Underwear</input>
-                    <input value="false" type="radio" name="firstAnswer">Hands</input>
-                    <input value="false" type="radio" name="firstAnswer">Garbage Can</input>
-                    <input value="true" type="radio" name="firstAnswer">Toilet</input>
+                    <input value="false" type="radio" name="firstAnswer4">Foot</input>
+                    <input value="false" type="radio" name="firstAnswer4">Underwear</input>
+                    <input value="false" type="radio" name="firstAnswer4">Hands</input>
+                    <input value="false" type="radio" name="firstAnswer4">Garbage Can</input>
+                    <input value="true" type="radio" name="firstAnswer4">Toilet</input>
                 </form>
         </div>
     </div>
@@ -129,6 +131,7 @@
 </div>
 
 <script type="text/javascript">
+  $(document).ready(function() {
 
 	$(".button").click(function(){
 
@@ -144,11 +147,8 @@
 			        clearTimeout(timerId);
               $("#hide").addClass("hide");
               $("#gameOver").append("<h3>All Done!</h3>");
-              $("#gameOver").append("<h3>Correct Answers: 0</h3>");
-              $("#gameOver").append("<h3>incorrect Answers: 0</h3>");
-              $("#gameOver").append("<h3>Unanswered: 0 </h3>");
 			        stop();
-                  
+              // 
                  
 
 			    } else {
@@ -156,13 +156,40 @@
 			        timeLeft--;
 			    	}
 				};
-         $(function(){
-                    $("#hide").on('change',function(){
-                 
-                    alert($('input[name=firstAnswer]:checked', '#hide').val());
+
+
+
+           $(function(){
+                    $(".hide").on('change',function(){
+
+                      var trueCount = 0;
+                      var falseCount;
+                      var unanswered;
+
+                      if($('input[name=firstAnswer1]:checked', '#hide').val() == "true"){
+                        trueCount++;
+                      };
+
+                      if($('input[name=firstAnswer2]:checked', '#hide').val() == "true"){
+                        trueCount++;
+                      };
+                  
+                      if($('input[name=firstAnswer3]:checked', '#hide').val() == "true"){
+                        trueCount++;
+                      };
+                  
+                      if($('input[name=firstAnswer4]:checked', '#hide').val() == "true"){
+                        trueCount++;
+                      };
+                        
+                        $("#gameOver").html(trueCount +" Answers Correct");
+                  
+                  
+                    console.log(trueCount);
                   })
-                  })
-			});
+                })
+			       });
+            });
 
 
 

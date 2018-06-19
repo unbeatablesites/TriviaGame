@@ -36,11 +36,18 @@
   		font-family: 'Fugaz One', cursive;
   		margin: 0 auto;
   		margin-top: 50px;	
+      text-align: center;
 
 	  	}
 
 
 	 #center{
+      font-family: 'Fugaz One', cursive;
+      text-align: center; 
+
+      }
+
+    .center{
   		font-family: 'Fugaz One', cursive;
   		text-align: center; 
 
@@ -60,6 +67,10 @@
     display: none;
 }
 
+  .white{
+    color: blue;
+  }
+
 
   </style>
 
@@ -72,12 +83,12 @@
 					<h1>Totally Trivial Trivia</h1/>
 					<h2> Click Start To Play </h2>	
 				</div>
-        <div><h3 id="gameOver"></h3><span id="count" class="hide"></span></div>     
+        <div><h3 id="gameOver" class="center"></h3><span id="count" class="hide"></span></div>     
 			<div class="button">Start</div>	
 
       <div class="hide" id="hide">
         <div id="question1" class="row">
-            <p class="col-md-12 questionAnswer">Q1: What is my name?</p>
+            <p class="white">Q1: What is my name?</p>
             <form>
                 <!-- This is how you create radio input. More answers = more input tags -->
                 <input value="false" type="radio" name="firstAnswer1">Andrew</input>
@@ -87,9 +98,9 @@
                 <input value="true" type="radio" name="firstAnswer1">Frank</input>
             </form>
         </div>
-
+        <br>
         <div id="question2" class="row">
-                <p class="col-md-12 questionAnswer">Q2: What is the capital of Georgia?</p>
+                <p class="white">Q2: What is the capital of Georgia?</p>
                 <form>
                     <input value="false" type="radio" name="firstAnswer2">Annapolis</input>
                     <input value="false" type="radio" name="firstAnswer2">Chicago</input>
@@ -98,9 +109,9 @@
                     <input value="false" type="radio" name="firstAnswer2">New York City</input>
                 </form>
         </div>
-
+         <br>
         <div id="question3" class="row">
-                <p class="col-md-12 questionAnswer">Q2: Which of the following is the highest grossing Disney movie?(As of 6/2018)</p>
+                <p class="white">Q2: Which of the following is the highest grossing Disney movie?(As of 6/2018)</p>
                 <form>
                     <input value="false" type="radio" name="firstAnswer3">Toy Story 3</input>
                     <input value="false" type="radio" name="firstAnswer3">Finding Nemo</input>
@@ -109,9 +120,9 @@
                     <input value="false" type="radio" name="firstAnswer3">Zootopia</input>
                 </form>
         </div>
-
+         <br>
         <div id="question4" class="row">
-                <p class="col-md-12 questionAnswer">Q2: There are one trillion germs that live on each what</p>
+                <p class="white">Q2: There are one trillion germs that live on each what</p>
                 <form>
                     <input value="false" type="radio" name="firstAnswer4">Foot</input>
                     <input value="false" type="radio" name="firstAnswer4">Underwear</input>
@@ -136,7 +147,7 @@
               $(".hide").removeClass("hide");
               $( "h3" ).toggle();
           });
-      		var timeLeft = 10;
+      		var timeLeft = 30;
 			var elem = document.querySelectorAll('h2');
 			var timerId = setInterval(countdown, 1000);
 

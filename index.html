@@ -162,30 +162,35 @@
                     $(".hide").on('change',function(){
 
                       var trueCount = 0;
-                      var falseCount;
-                      var unanswered;
+                      var falseCount = 0;
+                      var unanswered = 0;
 
                       if($('input[name=firstAnswer1]:checked', '#hide').val() == "true"){
                         trueCount++;
-                      };
+                      }else{
+                        falseCount++
+                      }
 
                       if($('input[name=firstAnswer2]:checked', '#hide').val() == "true"){
                         trueCount++;
-                      };
+                      }else{
+                        falseCount++
+                      }
                   
                       if($('input[name=firstAnswer3]:checked', '#hide').val() == "true"){
                         trueCount++;
-                      };
+                      }else{
+                        falseCount++
+                      }
                   
                       if($('input[name=firstAnswer4]:checked', '#hide').val() == "true"){
                         trueCount++;
-                      };
+                      }else{
+                        falseCount++
+                      }
                         
-                        $("h3").html(trueCount +" Answers Correct");
-                     // $("h3").html(trueCount +" Answers Correct");
+                        $("h3").html(trueCount +" Answered Correct " +"<br>"+ falseCount +"Wrong Answers");
                         
-                        // $("h3").html(trueCount +" Answers Correct");
-                         // $( "div" ).slideDown( "slow" );
                   
                     console.log(trueCount);
                   })

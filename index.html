@@ -72,10 +72,7 @@
 					<h1>Totally Trivial Trivia</h1/>
 					<h2> Click Start To Play </h2>	
 				</div>
-        <div><h3 id="gameOver"></h3><span id="count" class="hide"></span></div>    
-
-
-
+        <div><h3 id="gameOver"></h3><span id="count" class="hide"></span></div>     
 			<div class="button">Start</div>	
 
       <div class="hide" id="hide">
@@ -137,6 +134,7 @@
 
       		$(".button").fadeOut(2000 , function(){
               $(".hide").removeClass("hide");
+              $( "h3" ).toggle();
           });
       		var timeLeft = 10;
 			var elem = document.querySelectorAll('h2');
@@ -147,6 +145,7 @@
 			        clearTimeout(timerId);
               $("#hide").addClass("hide");
               $("#gameOver").append("<h3>All Done!</h3>");
+              $( "h3" ).toggle();
 			        stop();
               // 
                  
@@ -182,8 +181,11 @@
                         trueCount++;
                       };
                         
-                        $("#gameOver").html(trueCount +" Answers Correct");
-                  
+                        $("h3").html(trueCount +" Answers Correct");
+                     // $("h3").html(trueCount +" Answers Correct");
+                        
+                        // $("h3").html(trueCount +" Answers Correct");
+                         // $( "div" ).slideDown( "slow" );
                   
                     console.log(trueCount);
                   })
